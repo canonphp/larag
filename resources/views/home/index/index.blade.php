@@ -30,7 +30,7 @@
                     <div class="layui-fluid">
                         <div class="layui-row">
                             <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
-                                <div class="img"><img src="/res/img/sy_img1.jpg" alt=""></div>
+                                <div class="img"><img src="{{$article->image}}" height="250px" width="" alt=""></div>
                             </div>
                             <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
                                 <div class="item-cont">

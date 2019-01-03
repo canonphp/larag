@@ -12,7 +12,7 @@
                                 <p class="cont-info"><span class="data">{{$data->created_at->toFormattedDateString()}}</span>
                                     <a href="/article/{{$data->cate_id}}"><span class="types">{{$data->cates->name}}</span></a></p>
                             </div>
-                            <img src="/res/img/wz_img1.jpg">
+                            <img src="{{$data->image}}" width="560px">
                             <p>{!! $data->content !!}</p>
 
                             <div class="btn-box">

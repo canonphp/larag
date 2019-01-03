@@ -61,6 +61,9 @@
                 <i class="layui-icon"></i>
                 <p>点击上传，或将图片拖拽到此处</p>
             </div>
+            <div class="layui-upload-drag" id="img">
+                <img src="{{$article->image}}" alt="" id="imgurl">
+            </div>
         </div>
 
         <div class="layui-form-item layui-form-text">

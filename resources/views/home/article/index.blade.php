@@ -17,7 +17,7 @@
                           {{str_limit($cate->content,'80','...')}}
                         </p>
                         <div class="img-box">
-                            <img src="../res/img/wy_img1.jpg">
+                            <img src="{{$cate->image}}" width="200px">
                         </div>
                         <div class="op-list">
                             <p class="like"><i class="layui-icon layui-icon-praise"></i><span>1200</span></p>
