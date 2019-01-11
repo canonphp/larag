@@ -17,6 +17,8 @@ class IndexController extends Controller
 {
     public function index()
     {
+
+
         $cates = Category::getCates();
         $articles = Article::getArticles();
         return view('home.index.index',['cates'=>$cates,'articles'=>$articles]);

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use zgldh\QiniuStorage\QiniuStorage;
 
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
     //
     public function index()
@@ -63,11 +63,10 @@ class ArticleController extends Controller
         $article->cate_id = \request('cate_id');
         $article->title = \request('title');
         $article->image = \request('image');
-        $article->content = \request('	content');
+        $article->content = \request('content');
         if ($article->save()){
-            return redirect("/admin.article.edit/{$article->id}");
+            return redirect("/backend/article/{$article->id}/edit");
         }
-
 
     }
 

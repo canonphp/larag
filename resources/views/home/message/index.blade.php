@@ -10,101 +10,51 @@
                         <img class="banner-img" src="../res/img/liuyan.jpg">
                         <div class="form">
                             <form class="layui-form" action="">
+                                {{csrf_field()}}
                                 <div class="layui-form-item layui-form-text">
                                     <div class="layui-input-block">
-                                        <textarea name="desc" placeholder="既然来了，就说几句" class="layui-textarea"></textarea>
+                                        <textarea name="desc" id="desc" placeholder="既然来了，就说几句" class="layui-textarea"></textarea>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block" style="text-align: right;">
-                                        <button class="layui-btn definite">確定</button>
+                                        <a id="message" class="layui-btn">確定</a>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="volume">
-                        全部留言 <span>10</span>
+                        全部留言 <span>{{$count}}</span>
                     </div>
                     <div class="list-cont">
+                    @foreach($messages as $message )
                         <div class="cont">
                             <div class="img">
-                                <img src="../res/img/header.png" alt="">
+                                <img src="{{$message->users->avatar}}" style="border-radius: 50%" width="60" alt="">
                             </div>
                             <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
+                                <p class="tit">
+                                    <span style="color: #FFB800" class="name">{!!$message->users->name!!}&nbsp;</span>
+                                    <span class="email">Email:<span style="color: #7da8c3">{{$message->users->email}}</span></span>
+                                    <span class="data">{{$message->created_at->diffForHumans()}}
+                                        @can('delete',$message)
+                                        <span><a style="color: #007DDB" href="/message/{{$message->id}}/delete">删除</a></span>
+                                        @endcan
+                                    </span></p>
+                                <p class="ct">{!! $message->content !!}</p>
                             </div>
                         </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        <div id="demo" style="text-align: center;"></div>
+        <div class="page">
+            {{$messages->links()}}
+        </div>
     </div>
 </div>
 
     @endsection
+

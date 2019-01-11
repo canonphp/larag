@@ -6,6 +6,10 @@
  
  */
 
+.fly-edit{position:relative; display: block; top: 1px; left:0; padding:0 10px; border: 1px solid #e6e6e6; border-radius: 2px 2px 0 0; background-color: #FBFBFB;}
+.fly-edit span{cursor:pointer; padding:0 10px; line-height: 38px; color:#009E94;}
+.fly-edit span i{position: relative; padding-right: 6px; font-size: 18px;}
+.fly-edit span:hover{color: #5DB276;}
 
 /*end-menu-btn*/
 

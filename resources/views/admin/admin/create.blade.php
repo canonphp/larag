@@ -25,7 +25,7 @@
     <form class="layui-form">
         <div class="layui-form-item">
             <label for="username" class="layui-form-label">
-                <span class="x-red">*</span>登录名
+                <span class="x-red">*</span>管理员名称
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="username" name="username" required="" lay-verify="required"
@@ -35,18 +35,7 @@
                 <span class="x-red">*</span>将会成为您唯一的登入名
             </div>
         </div>
-        <div class="layui-form-item">
-            <label for="phone" class="layui-form-label">
-                <span class="x-red">*</span>手机
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="phone" name="phone" required="" lay-verify="phone"
-                       autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-form-mid layui-word-aux">
-                <span class="x-red">*</span>将会成为您唯一的登入名
-            </div>
-        </div>
+
         <div class="layui-form-item">
             <label for="L_email" class="layui-form-label">
                 <span class="x-red">*</span>邮箱
@@ -59,14 +48,14 @@
                 <span class="x-red">*</span>
             </div>
         </div>
-        <div class="layui-form-item">
+     {{--   <div class="layui-form-item">
             <label class="layui-form-label"><span class="x-red">*</span>角色</label>
             <div class="layui-input-block">
                 <input type="checkbox" name="like1[write]" lay-skin="primary" title="超级管理员" checked="">
                 <input type="checkbox" name="like1[read]" lay-skin="primary" title="编辑人员">
                 <input type="checkbox" name="like1[write]" lay-skin="primary" title="宣传人员" checked="">
             </div>
-        </div>
+        </div>--}}
         <div class="layui-form-item">
             <label for="L_pass" class="layui-form-label">
                 <span class="x-red">*</span>密码

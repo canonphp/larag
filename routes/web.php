@@ -21,14 +21,28 @@ Route::get('/article/{id?}','Home\ArticleController@index');
 
 Route::get('/article/{id}/detail','Home\ArticleController@show');
 
+
+Route::post('/comment','Home\CommentController@commentStore');
+Route::get('/comment/{comment}/delete','Home\CommentController@delete');
+
+
 Route::get('/answers','Home\AnswersController@index');
+Route::post('/answers','Home\AnswersController@answersStore');
+
+
 
 Route::get('/message','Home\MessageController@index');
+Route::get('/message/{message}/delete','Home\MessageController@index');
+
+Route::post('/message','Home\MessageController@MessageStore');
 
 Route::get('/about','Home\AboutController@index');
 
 Route::get('/login','Home\LoginController@loginForm');
+Route::get('/logout','Home\LoginController@logout');
 Route::post('/login','Home\LoginController@login');
+
+
 Route::get('/register','Home\LoginController@registerForm');
 Route::post('/register','Home\LoginController@register');
 

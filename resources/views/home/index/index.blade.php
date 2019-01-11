@@ -3,12 +3,12 @@
     <div class="banner">
         <div class="cont w1000">
             <div class="title">
-                <h3>Larag</h3>
-                <h4>欢迎来到我的Blog</h4>
+                <h3>斜杠骚年</h3>
+                <h4>吾爱Coding</h4>
             </div>
             <div class="amount">
-                <p><span class="text">访问量</span><span class="access">1000</span></p>
-                <p><span class="text">日志</span><span class="daily-record">1000</span></p>
+                <p><span class="text">访问量</span><span class="access">0</span></p>
+                <p><span class="text">日志</span><span class="daily-record">0</span></p>
             </div>
         </div>
     </div>

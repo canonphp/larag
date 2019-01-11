@@ -65,7 +65,7 @@ layui.define(['mm','jquery'],function(exports){
         }
       })
     },
-    submit: function(){
+  /*  submit: function(){
       $('.definite').on('click',function(e){
         var event = e || event;
         event.preventDefault();
@@ -91,7 +91,7 @@ layui.define(['mm','jquery'],function(exports){
         } 
         cunt.text(cunts);
       })
-    }
+    }*/
   }     
   exports('menu',menu)
 });

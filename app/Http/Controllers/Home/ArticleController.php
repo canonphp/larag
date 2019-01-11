@@ -48,9 +48,9 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         $id = intval(trim(request()->id));
-        $data = Article::getArticleDetail($id);
+        $article = Article::getArticleDetail($id);
 
-        return view('home.article.details')->with(['data'=>$data]);
+        return view('home.article.details')->with(['article'=>$article]);
     }
 
 

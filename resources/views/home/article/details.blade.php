@@ -1,6 +1,7 @@
 @extends('home.layouts.base')
 @section('content')
 <div class="content whisper-content leacots-content details-content">
+    @if(!empty($article))
     <div class="cont w1000">
         <div class="whisper-list">
             <div class="item-box">
@@ -8,89 +9,67 @@
                     <div class="form-box">
                         <div class="article-cont">
                             <div class="title">
-                                <h3>{{$data->title}}</h3>
-                                <p class="cont-info"><span class="data">{{$data->created_at->toFormattedDateString()}}</span>
-                                    <a href="/article/{{$data->cate_id}}"><span class="types">{{$data->cates->name}}</span></a></p>
+                                <h3>{{$article->title}}</h3>
+                                <p class="cont-info"><span class="data">{{$article->created_at->toFormattedDateString()}}</span>
+                                    <a href="/article/{{$article->cate_id}}"><span class="types">{{$article->cates->name}}</span></a></p>
                             </div>
-                            <img src="{{$data->image}}" width="560px">
-                            <p>{!! $data->content !!}</p>
+                            <img src="{{$article->image}}" width="560px">
+                            <p>{!! $article->content !!}</p>
 
                             <div class="btn-box">
-                                <button class="layui-btn layui-btn-primary">上一篇</button>
-                                <button class="layui-btn layui-btn-primary">下一篇</button>
+                                <a href="/article/{{$article['id']-1}}/detail" class="layui-btn layui-btn-primary">上一篇</a>
+                                <a href="/article/{{$article['id']+1}}/detail" class="layui-btn layui-btn-primary">下一篇</a>
                             </div>
                         </div>
                         <div class="form">
-                            <form class="layui-form" action="">
+                            <form class="layui-form">
+                                <input type="hidden" id="article_id" value="{{$article['id']}}">
+                                {{csrf_field()}}
                                 <div class="layui-form-item layui-form-text">
                                     <div class="layui-input-block">
-                                        <textarea name="desc" placeholder="既然来了，就说几句" class="layui-textarea"></textarea>
+                                        <textarea name="comment" id="comment" placeholder="你有神马想说的？，就说几句吧" class="layui-textarea"></textarea>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block" style="text-align: right;">
-                                        <button class="layui-btn definite">確定</button>
+                                        <a class="layui-btn " id="comments">確定</a>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="volume">
-                        全部留言 <span>10</span>
+                        全部评论 <span>{{$article->comments_count}}</span>
                     </div>
                     <div class="list-cont">
-
+                        @foreach($article->comments as $comment)
                         <div class="cont">
                             <div class="img">
-                                <img src="../res/img/header.png" alt="">
+                                <img src="{{$comment->users->avatar}}" style="border-radius: 50%" width="60" alt="">
                             </div>
                             <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
+                                <p class="tit">用户：<span style="color: #FFB800" class="name">{!!$comment->users->name!!}</span>
+                                    <span class="data">{{$comment->created_at->diffForHumans()}}
+                                        @can('delete',$comment)
+                                        <span><a href="/comment/{{$comment->id}}/delete" style="color: #007DDB">删除</a></span>
+                                        @endcan
+                                    </span>
+                                    </p>
+                                <p class="ct">{!! $comment->content!!}</p>
                             </div>
                         </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="../res/img/header.png" alt="">
-                            </div>
-                            <div class="text">
-                                <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                                <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        <div id="demo" style="text-align: center;"></div>
+        <div class="page">
+
+        </div>
     </div>
+        @else
+    <div class="cont w1000"><h1>暂无数据~~~~~</h1></div>
+        @endif
 </div>
 
     @endsection

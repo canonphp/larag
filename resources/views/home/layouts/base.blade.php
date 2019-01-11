@@ -103,10 +103,10 @@
 
 </div>--}}
 
-
 @include('home.layouts.footer')
 <script type="text/javascript" src="/res/layui/layui.js"></script>
 <script type="text/javascript" src="/res/js/com.js">
 </script>
+
 </body>
 </html>

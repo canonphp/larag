@@ -15,7 +15,7 @@ class LoginController extends BaseController
 {
     public function __construct()
     {
-        $this->middleware('admin.auth');
+        $this->middleware('guest');
     }
 
     public function index()
