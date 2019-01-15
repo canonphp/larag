@@ -50,9 +50,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ValidationException){
+        /*if ($exception instanceof ValidationException){
             return $this->invalidJson($request,$exception);
-        }
+        }*/
 
         if ($exception instanceof HttpResponseException){
             return response()->view('404');

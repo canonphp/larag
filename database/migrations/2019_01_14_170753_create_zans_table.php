@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRepliesTable extends Migration
+class CreateZansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateRepliesTable extends Migration
      */
     public function up()
     {
-        Schema::create('replies', function (Blueprint $table) {
+        Schema::create('zans', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->comment('用户ID');
-            $table->integer('answer_id')->comment('问题ID');
-            $table->text('content')->comment('回答内容');
+            $table->integer('user_id')->comment('用户Id');
+            $table->integer('article_id')->comment('文章ID');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateRepliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replies');
+        Schema::dropIfExists('zans');
     }
 }

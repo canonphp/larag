@@ -45,11 +45,11 @@ return [
     'disks' => [
 
         'qiniu' => [
-            'driver'  => 'qiniu',
-            'domain' => 'pkqj9sjev.bkt.clouddn.com', //你的七牛域名
-            'access_key'=> 'JHDyR-7qFA6JIer5tzgMR7H75wzq400QWNOLlLke',  //AccessKey
-            'secret_key'=> 'zFHtncUC5KXuFeWlHSqrBEOx0Mp_GnYoHxewZ0Yf',  //SecretKey
-            'bucket'    => 'larag',  //Bucket名字
+            'driver'  => env('QINIU_DEIVER'),
+            'domain' => env('QINIU_DOMAIN'), //你的七牛域名
+            'access_key'=> env('QINIU_ACCESS_KEY'),  //AccessKey
+            'secret_key'=> env('QINIU_SECRET_KEY'),  //SecretKey
+            'bucket'    => env('QINIU_BUCKET'),  //Bucket名字
             'notify_url'=> '',  //持久化处理回调地址
         ],
 

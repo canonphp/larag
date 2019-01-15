@@ -30,6 +30,9 @@ class ArticleController extends Controller
     //文章列表
     public function index()
     {
+
+
+
         $cate_id = intval(trim(request()->id));
         $cates = [];
         if ($cate_id){
@@ -47,8 +50,9 @@ class ArticleController extends Controller
     //文章详情
     public function show(Article $article)
     {
-        $id = intval(trim(request()->id));
-        $article = Article::getArticleDetail($id);
+
+//        $id = intval(trim(request()->id));
+//        $article = Article::getArticleDetail($id);
 
         return view('home.article.details')->with(['article'=>$article]);
     }

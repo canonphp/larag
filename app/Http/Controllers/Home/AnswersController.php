@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Home;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Reply;
 use App\Models\Answers;
 use Illuminate\Http\Request;
 
@@ -17,12 +18,13 @@ class AnswersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('opera.auth')->except('index');
+        $this->middleware('opera.auth')->except(['index','replyShow']);
     }
 
 
     public function index()
     {
+
 
         $answers = Answers::getAnswersAll();
         $count  = Answers::getAnswersCount();
@@ -32,8 +34,10 @@ class AnswersController extends Controller
     }
 
 
-
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function answersStore(Request $request)
     {
 
@@ -52,6 +56,15 @@ class AnswersController extends Controller
         return response()->json(['status'=>0]);
 
     }
+
+
+    public function answersShow(Answers $answers)
+    {
+
+        return view('home.answers.show')->with(['answers'=>$answers]);
+    }
+
+
 
 
 }

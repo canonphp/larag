@@ -78,7 +78,7 @@ body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-se
 .header .header-down-nav{display: none;}
 
 
-.banner{height: 600px; width: 100%; background: url(../img/banners.jpg) no-repeat; background-size:cover;}
+.banner{height: 600px; width: 100%; background: url(http://pkqj9sjev.bkt.clouddn.com/article/image_e6fbaf00411ccf3c0bfa49d43d28b65a.jpg) no-repeat; background-size:cover;}
 .banner .cont{position: relative;}
 .banner .title{color: #fff; position: absolute; top: 152px; left: 0;}
 .banner .title h3{font-size: 80px; line-height: 88px;}

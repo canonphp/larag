@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Model\Reply;
+use App\Models\Reply;
 use Illuminate\Database\Eloquent\Model;
 
 class Answers extends Model
@@ -21,7 +21,7 @@ class Answers extends Model
 
     public function replies()
     {
-        return $this->hasMany(Reply::class,'answer_id','id');
+        return $this->hasMany(Reply::class,'answer_id','id')->orderBy('created_at','desc');
     }
 
     public static  function getAnswersCount()
@@ -32,9 +32,10 @@ class Answers extends Model
 
     public static function getAnswersAll()
     {
-        $data = self::withCount('users:id,name,avatar')->orderBy('created_at','desc')->paginate(8);
+        $data = self::withCount(['users:id,name,avatar','replies'])->orderBy('created_at','desc')->paginate(8);
         return $data;
     }
+
 
 
 

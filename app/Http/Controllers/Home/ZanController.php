@@ -2,42 +2,16 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Models\Comment;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Zan;
+use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class ZanController extends Controller
 {
     public function __construct()
     {
         $this->middleware('opera.auth');
     }
-
-
-    public function commentStore(Request $request)
-    {
-        $data = [
-            'content'=>$request->post('comment'),
-            'article_id'=>$request->post('article_id'),
-            'user_id'=>\Auth::user()->id,
-        ];
-       $comment = Comment::create($data);
-       if ($comment){
-           return  response()->json(['status'=>1,'msg'=>'评论成功']);
-       }
-       return  response()->json(['status'=>0]);
-
-    }
-
-
-    public function delete(Comment $comment)
-    {
-        $comment->delete();
-        return back();
-
-    }
-
-
 
     /**
      * Display a listing of the resource.
@@ -47,6 +21,29 @@ class CommentController extends Controller
     public function index()
     {
         //
+    }
+
+
+    public function zans(Request $request)
+    {
+        $data = [
+        'article_id'=>$request->post('article_id'),
+        'user_id'=>\Auth::id()
+        ];
+        $hasZan = Zan::where('user_id','=',\Auth::id())
+            ->where('article_id','=',$data['article_id'])
+            ->count();
+
+        if (!$hasZan){
+            $zan = Zan::create($data);
+
+            if ($zan){
+                return response()->json(['status'=>1]);
+            }
+        }
+
+        return response()->json(['status'=>0]);
+
     }
 
     /**
@@ -73,10 +70,10 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Zan  $zan
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Zan $zan)
     {
         //
     }
@@ -84,10 +81,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Zan  $zan
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Zan $zan)
     {
         //
     }
@@ -96,10 +93,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Zan  $zan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Zan $zan)
     {
         //
     }
@@ -107,10 +104,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Zan  $zan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Zan $zan)
     {
         //
     }

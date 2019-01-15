@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Zan;
+use App\Policies\ReplyPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -16,6 +18,9 @@ class AuthServiceProvider extends ServiceProvider
         /*'App\Model' => 'App\Policies\ModelPolicy',*/
         'App\Models\Comment'=>'App\Policies\CommentPolicy',
         'App\Models\Message'=>'App\Policies\MessagePolicy',
+        'App\Models\Reply'=> ReplyPolicy::class,
+        'App\Models\Zan'=> Zan::class,
+
     ];
 
     /**

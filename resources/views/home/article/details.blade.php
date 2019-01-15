@@ -14,7 +14,7 @@
                                     <a href="/article/{{$article->cate_id}}"><span class="types">{{$article->cates->name}}</span></a></p>
                             </div>
                             <img src="{{$article->image}}" width="560px">
-                            <p>{!! $article->content !!}</p>
+                            <p class="layui-code">{!! $article->content !!}</p>
 
                             <div class="btn-box">
                                 <a href="/article/{{$article['id']-1}}/detail" class="layui-btn layui-btn-primary">上一篇</a>
@@ -55,7 +55,7 @@
                                         @endcan
                                     </span>
                                     </p>
-                                <p class="ct">{!! $comment->content!!}</p>
+                                <p class="ct layui-code">{!! $comment->content!!}</p>
                             </div>
                         </div>
                         @endforeach

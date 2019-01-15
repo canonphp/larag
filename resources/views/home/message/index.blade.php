@@ -42,7 +42,7 @@
                                         <span><a style="color: #007DDB" href="/message/{{$message->id}}/delete">删除</a></span>
                                         @endcan
                                     </span></p>
-                                <p class="ct">{!! $message->content !!}</p>
+                                <p class="ct layui-code">{!! $message->content !!}</p>
                             </div>
                         </div>
                         @endforeach

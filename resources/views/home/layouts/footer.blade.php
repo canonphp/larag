@@ -3,6 +3,7 @@
         <div class="qrcode">
             <img width="160px" src="/res/img/weixin.jpg">
         </div>
+
         <div class="practice-mode">
             <img src="/res/img/down_img.jpg">
             <div class="text">

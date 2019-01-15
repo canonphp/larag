@@ -10,11 +10,13 @@ class Article extends Model
     protected $fillable = ['cate_id','title','content','is_top','image'];
 
 
+    protected static $withCondntion = ['cates','comments','zans'];
 
     //关联评论表
     public function comments()
     {
-        return $this->hasMany(Comment::class,'article_id','id');
+
+        return $this->hasMany(Comment::class,'article_id','id')->orderBy('created_at','desc');
     }
 
 
@@ -27,7 +29,13 @@ class Article extends Model
 
     public function cates()
     {
-        return $this->hasOne(Category::class,'id','cate_id');
+        return $this->belongsTo(Category::class,'cate_id','id');
+    }
+
+    //点赞
+    public function zans()
+    {
+        return $this->hasMany(Zan::class,'article_id','id');
     }
 
     public function getArticleFind($id)
@@ -45,21 +53,22 @@ class Article extends Model
 
     public static function getCateByArticle($id)
     {
-        $data = self::where(['cate_id'=>$id])->withCount(['cates','comments'])->paginate(5);
+
+        $data = self::where(['cate_id'=>$id])->withCount(self::$withCondntion)->paginate(5);
         return $data;
     }
 
     //获取所有文章
     public static function getAllArticles()
     {
-        $data = self::where(['state'=>1])->orderBy('id','desc')->withCount(['cates','comments'])->paginate(5);
+        $data = self::where(['state'=>1])->orderBy('id','desc')->withCount(self::$withCondntion)->paginate(5);
         return $data;
     }
 
     //文章详情
     public static function getArticleDetail($id)
     {
-        $data = self::withCount(['cates','comments'])->find($id);
+        $data = self::withCount(self::$withCondntion)->find($id);
         return $data;
     }
 

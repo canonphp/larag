@@ -21,7 +21,11 @@
                             <img src="{{$cate->image}}" width="200px">
                         </div>
                         <div class="op-list">
-                            <p class="like"><i class="layui-icon layui-icon-praise"></i><span>1200</span></p>
+                            @can('zans',$cate)
+                            <p  class="like active"><i class="layui-icon layui-icon-praise"></i><span>{{$cate->zans_count}}</span></p>
+                            @endcan
+                             <p onclick="zan_post({{$cate->id}})" class="like"><i class="layui-icon layui-icon-praise"></i><span>{{$cate->zans_count}}</span></p>
+
                             <p class="edit"><i class="layui-icon layui-icon-reply-fill"></i><span>{{$cate->comments_count}}</span></p>
                             <p class="off"><span>展开</span><i class="layui-icon layui-icon-down"></i></p>
                         </div>
@@ -30,16 +34,16 @@
                         <div class="form">
                             <img src="../res/img/header2.png">
                             <form class="layui-form">
-                                <input type="hidden" id="article_id" value="{{$cate['id']}}">
+                               {{-- <input type="hidden" id="article_id" value="{{$cate['id']}}">--}}
                                 {{csrf_field()}}
                                 <div class="layui-form-item layui-form-text">
                                     <div class="layui-input-block">
-                                        <textarea name="comment" id="comment" class="layui-textarea"></textarea>
+                                        <textarea id="listComment" name="comment" class="layui-textarea"></textarea>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block" style="text-align: right;">
-                                        <a class="layui-btn " id="comments">確定</a>
+                                        <a class="layui-btn " onclick="content_list({{$cate->id}})" >確定</a>
                                     </div>
                                 </div>
                             </form>
@@ -52,7 +56,7 @@
                                 </div>
                                 <div class="text">
                                     <p class="tit"><span class="name">{!!$comment->users->name!!}</span><span class="data">{{$comment->created_at->diffForHumans()}}</span></p>
-                                    <p class="ct">{!! $comment->content !!}</p>
+                                    <p class="ct layui-code">{!! $comment->content !!}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -61,6 +65,8 @@
                 </div>
                 @endforeach
             </div>
+
+
             <div class="page">
 
                     {{$cates->links()}}

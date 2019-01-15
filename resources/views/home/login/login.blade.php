@@ -22,7 +22,7 @@
     <div class="login_face"><img src="./res/img/lavavel.png" class="userAvatar"></div>
     <div class="layui-form-item input-item">
         <label for="userName">邮箱</label>
-        <input type="text" placeholder="请输入邮箱" name="email" autocomplete="off" id="userName" class="layui-input" >
+        <input type="text" placeholder="请输入邮箱" value="{{old('email')}}" name="email" autocomplete="off" id="userName" class="layui-input" >
     </div>
     <div class="layui-form-item input-item">
         <label for="password">密码</label>

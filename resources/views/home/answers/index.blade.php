@@ -115,15 +115,44 @@
                             <img src="{{$answer->users->avatar}}" style="border-radius: 50%" width="60" alt="">
                         </div>
                         <div class="text">
-                            <p class="tit"><span style="color: #FFB800" class="name">{{$answer->users->name}}</span>
+                            <p class="tit">用户：<span style="color: #FFB800" class="name">{{$answer->users->name}}</span>
+                                &nbsp;
+                                <i class="layui-icon layui-icon-reply-fill"></i>{{$answer->replies_count}}
                                 <span class="data">{{$answer->created_at->diffForHumans()}}
                                     <br>
                                     <br>
-                                    <span><a id="answer" class="layui-btn layui-btn-xs layui-btn-warm">我来解答</a></span>
+                                    <span>
+                                        <a id="answer" onclick="replies_motai({{$answer->id}})"  class="layui-btn layui-btn-xs layui-btn-warm">我来解答</a>
+                                    </span>
                                 </span></p>
-                            <p class="ct"><h2>{{$answer->title}}</h2>
+                            <p class="ct">
+                            <h2>
+                                <a href="/answers/{{$answer->id}}/detail">{!! $answer->title !!}</a>
+                            </h2>
 
                             </p>
+                            <div>
+                                <div id="answerMotai" style="display: none;">
+                                    <form class="layui-form">
+                                        {{csrf_field()}}
+                                        <input type="hidden" value="{{$answer->id}}" id="answer_id" name="answer_id">
+                                        <div class="layui-form-item layui-form-text">
+                                            <div class="layui-input-line">
+                                                <textarea id="reply" name="content"  class="layui-textarea"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <a id="replySubmit" class="layui-btn">回答</a>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     @endforeach
@@ -140,5 +169,8 @@
         </div>
     </div>
 </div>
+
+
+
 
     @endsection
