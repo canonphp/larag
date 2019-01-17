@@ -165,7 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
-
+        Weboap\Visitor\VisitorServiceProvider::class,
         /*
          * Package Service Providers...
          */

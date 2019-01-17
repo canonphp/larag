@@ -36,14 +36,9 @@
                             <form class="layui-form">
                                {{-- <input type="hidden" id="article_id" value="{{$cate['id']}}">--}}
                                 {{csrf_field()}}
-                                <div class="layui-form-item layui-form-text">
-                                    <div class="layui-input-block">
-                                        <textarea id="listComment" name="comment" class="layui-textarea"></textarea>
-                                    </div>
-                                </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block" style="text-align: right;">
-                                        <a class="layui-btn " onclick="content_list({{$cate->id}})" >確定</a>
+                                        <a class="layui-btn " onclick="content_list({{$cate->id}})" >发表评论</a>
                                     </div>
                                 </div>
                             </form>
@@ -72,6 +67,25 @@
                     {{$cates->links()}}
 
             </div>
+
+            <div id="articleMotai" style="display: none;">
+                <form class="layui-form">
+                    {{csrf_field()}}
+                    <div class="layui-form-item layui-form-text">
+                        <div class="layui-input-line">
+                            <textarea id="listComment" name="comment"  class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <a id="commentSubmit" class="layui-btn">评论</a>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
         </div>
             @else
             <div class="cont"><h1>暂无数据~~~</h1></div>
@@ -79,3 +93,4 @@
     </div>
 
 @endsection
+

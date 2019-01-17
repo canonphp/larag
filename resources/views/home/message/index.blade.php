@@ -39,7 +39,7 @@
                                     <span class="email">Email:<span style="color: #7da8c3">{{$message->users->email}}</span></span>
                                     <span class="data">{{$message->created_at->diffForHumans()}}
                                         @can('delete',$message)
-                                        <span><a style="color: #007DDB" href="/message/{{$message->id}}/delete">删除</a></span>
+                                        <span><a class="layui-btn layui-btn-xs layui-btn-normal" onclick="deleteMessage({{$message->id}})" href="javascript:;"><i class="layui-icon"></i>删除</a></span>
                                         @endcan
                                     </span></p>
                                 <p class="ct layui-code">{!! $message->content !!}</p>

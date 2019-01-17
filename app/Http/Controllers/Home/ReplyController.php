@@ -53,7 +53,10 @@ class ReplyController extends Controller
     public function delete(Reply $reply)
     {
         $reply->delete();
-        return back();
+        if ($reply->trashed()){
+            return back();
+        }
+
     }
 
 

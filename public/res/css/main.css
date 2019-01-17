@@ -67,7 +67,7 @@
 
 body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif; overflow-x: hidden;}
 .w1000{max-width: 1000px!important; margin:0 auto;}
-.header{height: 120px; line-height: 120px; position: relative; font-size: 16px;}
+.header{height: 120px; line-height: 120px; position: relative; font-size: 16px;box-shadow: 0 0 10px -1px #888888}
 .header .logo,.header .welcome-text,.header .nav{position: absolute; top: 0;}
 .header .logo{left: 65px;}
 .header .logo span{display: none;}
@@ -78,7 +78,7 @@ body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-se
 .header .header-down-nav{display: none;}
 
 
-.banner{height: 600px; width: 100%; background: url(http://pkqj9sjev.bkt.clouddn.com/article/image_e6fbaf00411ccf3c0bfa49d43d28b65a.jpg) no-repeat; background-size:cover;}
+.banner{height: 600px; width: 100%; background: url(http://qiniu.hodoop.cn/article/image_e6fbaf00411ccf3c0bfa49d43d28b65a.jpg) no-repeat; background-size:cover;}
 .banner .cont{position: relative;}
 .banner .title{color: #fff; position: absolute; top: 152px; left: 0;}
 .banner .title h3{font-size: 80px; line-height: 88px;}
@@ -134,13 +134,15 @@ body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-se
 .footer .practice-mode .text p span{padding-left: 24px;}
 
 
-
+.fly-marginTop {
+  width: 1000px;
+}
 
 
 
 /*whisper*/
 .whisper-content{padding:40px 0 100px 0;}
-.whisper-content .item-box{background: #f9f9f9; margin-bottom: 20px;}
+.whisper-content .item-box{background: #f9f9f9; margin-bottom: 20px;box-shadow: 0 0 10px 1px #888888}
 .whisper-content .cont{max-width: 800px; margin:0 auto;}
 .whisper-content .cont .item-box .item{padding:50px 46px 20px 54px;}
 .whisper-content .cont .whisper-list .whisper-title{height: 20px; line-height: 20px; margin-bottom: 20px;}

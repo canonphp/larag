@@ -17,6 +17,7 @@ class CreateZansTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->comment('用户Id');
             $table->integer('article_id')->comment('文章ID');
+            $table->timestamp('deleted_at')->comment('软删除时间');
             $table->timestamps();
         });
     }

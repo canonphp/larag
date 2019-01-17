@@ -14,7 +14,7 @@ class ArticleController extends BaseController
     public function index()
     {
         $cates  = Category::getCates();
-        $articles = Article::getArticles();
+        $articles = Article::getAllArticles();
         $count = Article::getArticleCount();
 
         return view('admin.article.index')->with(['articles'=>$articles,'cates'=>$cates,'count'=>$count]);

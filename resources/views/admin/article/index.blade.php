@@ -81,8 +81,7 @@
             <th>文章ID</th>
             <th>文章标题</th>
             <th>文章类型</th>
-            <th>作者</th>
-            <th>留言数</th>
+            <th>评论数</th>
             <th>点赞数</th>
             <th>浏览数</th>
             <th>状态</th>
@@ -100,9 +99,8 @@
             <td>{{$article->id}}</td>
             <td>{{str_limit($article->title,20,'...')}}</td>
             <td>{{$article->cates->name}}</td>
-            <td>admin</td>
-            <td>7854</td>
-            <td>3</td>
+            <td>{{$article->comments_count}}</td>
+            <td>{{$article->zans_count}}</td>
             <td>3</td>
             <td>未发货</td>
             <td>{{$article->created_at}}</td>

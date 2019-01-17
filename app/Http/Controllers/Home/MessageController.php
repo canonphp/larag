@@ -16,6 +16,12 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('opera.auth')->except(['index']);
+    }
+
     public function index()
     {
         $count  = Message::getMessageCount();
@@ -27,9 +33,6 @@ class MessageController extends Controller
     public function MessageStore(Request $request)
     {
         $post = $request->post('desc');
-        if (!\Auth::check()){
-            return response()->json(['status'=>-1,'msg'=>'请登录，再留言！！！']);
-        }
         $data = [
             'user_id'=>\Auth::user()->id,
             'content'=>$post,
@@ -45,10 +48,17 @@ class MessageController extends Controller
     }
 
 
-    public function delete(Comment $comment)
+    public function delete(Request $request)
     {
-        $comment->delete();
-        return back();
+       $message = Message::findOrFail(intval($request->post('id')));
+        $message->delete();
+        if ($message->trashed()){
+            return response()->json(['status'=>1]);
+        }
+
+        return response()->json(['status'=>0]);
+
+
     }
 
 

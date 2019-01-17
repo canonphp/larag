@@ -24,6 +24,7 @@ class CreateArticlesTable extends Migration
             $table->integer('browse_num')->comment('浏览量');
             $table->tinyInteger('state')->comment('文章状态')->index();
             $table->text('content')->comment('文章内容');
+            $table->timestamp('deleted_at')->comment('软删除时间');
             $table->timestamps();
         });
     }

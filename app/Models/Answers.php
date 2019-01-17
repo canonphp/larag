@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Models\Reply;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Answers extends Model
 {
+    use SoftDeletes;
     //
     protected $fillable = [
         'user_id','title','content'

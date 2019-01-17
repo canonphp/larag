@@ -11,7 +11,8 @@
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.2",
         "qiniu/php-sdk": "^7.2",
-        "zgldh/qiniu-laravel-storage": "^0.10.0"
+        "zgldh/qiniu-laravel-storage": "^0.10.0",
+        "weboap/visitor": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

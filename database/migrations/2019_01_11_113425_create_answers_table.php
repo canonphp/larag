@@ -18,6 +18,7 @@ class CreateAnswersTable extends Migration
             $table->integer('user_id')->comment('用户ID');
             $table->string('title',30)->comment('提问标题');
             $table->text('content')->comment('提问内容');
+            $table->timestamp('deleted_at')->comment('软删除时间');
             $table->timestamps();
         });
     }

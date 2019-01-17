@@ -12,6 +12,8 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use Weboap\Visitor\Facades\VisitorFacade;
+use Weboap\Visitor\Visitor;
 
 class ArticleController extends Controller
 {
@@ -53,7 +55,10 @@ class ArticleController extends Controller
 
 //        $id = intval(trim(request()->id));
 //        $article = Article::getArticleDetail($id);
+        //浏览量做不了
 
+        /*$visitor = new Visitor();
+        $visitor->log($article->id);*/
         return view('home.article.details')->with(['article'=>$article]);
     }
 

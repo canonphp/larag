@@ -33,7 +33,9 @@ class CommentController extends Controller
     public function delete(Comment $comment)
     {
         $comment->delete();
-        return back();
+        if($comment->trashed()){
+            return back();
+        }
 
     }
 

@@ -18,7 +18,7 @@ class AnswersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('opera.auth')->except(['index','replyShow']);
+        $this->middleware('opera.auth')->except(['index','answersShow']);
     }
 
 

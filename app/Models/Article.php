@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\VisitorRegistry;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -17,6 +18,13 @@ class Article extends Model
     {
 
         return $this->hasMany(Comment::class,'article_id','id')->orderBy('created_at','desc');
+    }
+
+
+    //关联浏览量
+    public function visitors()
+    {
+        return $this->hasMany(VisitorRegistry::class,'article_id','id');
     }
 
 

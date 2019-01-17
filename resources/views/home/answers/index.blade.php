@@ -131,27 +131,7 @@
                             </h2>
 
                             </p>
-                            <div>
-                                <div id="answerMotai" style="display: none;">
-                                    <form class="layui-form">
-                                        {{csrf_field()}}
-                                        <input type="hidden" value="{{$answer->id}}" id="answer_id" name="answer_id">
-                                        <div class="layui-form-item layui-form-text">
-                                            <div class="layui-input-line">
-                                                <textarea id="reply" name="content"  class="layui-textarea"></textarea>
-                                            </div>
-                                        </div>
 
-                                        <div class="layui-form-item">
-                                            <div class="layui-input-block">
-                                                <a id="replySubmit" class="layui-btn">回答</a>
-                                            </div>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -170,7 +150,26 @@
     </div>
 </div>
 
+<div>
+    <div id="answerMotai" style="display: none;">
+        <form class="layui-form">
+            {{csrf_field()}}
+            <div class="layui-form-item layui-form-text">
+                <div class="layui-input-line">
+                    <textarea id="reply" name="content"  class="layui-textarea"></textarea>
+                </div>
+            </div>
 
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <a id="replySubmit" class="layui-btn">回答</a>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
 
 
     @endsection

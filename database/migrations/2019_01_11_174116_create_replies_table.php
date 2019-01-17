@@ -18,6 +18,7 @@ class CreateRepliesTable extends Migration
             $table->integer('user_id')->comment('用户ID');
             $table->integer('answer_id')->comment('问题ID');
             $table->text('content')->comment('回答内容');
+            $table->timestamp('deleted_at')->comment('软删除时间');
             $table->timestamps();
         });
     }

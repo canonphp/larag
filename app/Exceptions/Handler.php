@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -54,9 +55,14 @@ class Handler extends ExceptionHandler
             return $this->invalidJson($request,$exception);
         }*/
 
+        if ($exception instanceof NotFoundHttpException){
+            return response()->view('404');
+        }
+
         if ($exception instanceof HttpResponseException){
             return response()->view('404');
         }
+
         return parent::render($request, $exception);
     }
 }

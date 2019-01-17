@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->text('content')->comment('评论内容');
             $table->index('user_id');
             $table->index('article_id');
+            $table->timestamp('deleted_at')->comment('软删除时间');
             $table->timestamps();
         });
     }

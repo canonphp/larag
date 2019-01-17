@@ -60,31 +60,6 @@ layui.use(['layer','layedit','jquery','form','element','code'], function(){ //�
             }
         });
 
-        /*    $.ajax({
-                type:"POST",
-                url:"/message",
-                dataType:"json",
-                data:{
-                    desc:conetent,
-                    _token:$("input[name='_token']").val()
-                },
-                success:function (res) {
-                    if (res.status==1){
-                        layer.msg(res.msg,{icon:6});
-                        setTimeout(function () {
-                            window.location.reload()
-                        },3000) ;
-                    }
-                     else if(res.status==-1){
-                        layer.msg(res.msg,{icon:5});
-                        return false;
-                    }else{
-                        layer.msg(res.msg,{icon:5});
-                        return false;
-                    }
-                }
-
-            })*/
     });
 
     //详情评论
@@ -117,30 +92,7 @@ layui.use(['layer','layedit','jquery','form','element','code'], function(){ //�
         });
 
 
-        /*  $.ajax({
-              type:"POST",
-              url:"/comment",
-              dataType:"json",
-              data:{
-                  comment:content,
-                  article_id:article_id,
-                  _token:$("input[name='_token']").val()
-              },
-              success:function (res) {
-                  if (res.status==1){
-                      layer.msg(res.msg);
-                      setTimeout(function () {
-                          window.location.reload();
-                      },3000)
-                  }else if (res.status ==-1){
-                      layer.msg('请登录再评论吧');
-                      return false;
-                  }else{
-                      layer.msg('评论失败');
-                      return false;
-                  }
-              }
-          });*/
+
 
 
     });
@@ -148,70 +100,7 @@ layui.use(['layer','layedit','jquery','form','element','code'], function(){ //�
 
 
     //列表评论
-    /*  $("a#listSubmit").on('click',function () {
-          var content = layedit.getText(listCommentIndex);
-          var article_id  =$("#article_id").val();
-          if (content == ''){
-              layer.msg('评论内容不能空');
-              return false;
-          }
-          var data = {
-              comment:content,
-               article_id:article_id,
-              //_token:$("input[name='_token']").val()
-          };
 
-          $.post('/comment',data,function (res) {
-              if (res.status==1){
-                  layer.msg(res.msg);
-                  setTimeout(function () {
-                      window.location.reload();
-                  },3000)
-              }else if (res.status ==-1){
-                  layer.msg(res.msg);
-                  return false;
-              }else{
-                  layer.msg('评论失败');
-                  return false;
-              }
-          });
-
-
-          //点赞
-
-
-
-
-
-
-
-        /!*  $.ajax({
-              type:"POST",
-              url:"/comment",
-              dataType:"json",
-              data:{
-                  comment:content,
-                  article_id:article_id,
-                  _token:$("input[name='_token']").val()
-              },
-              success:function (res) {
-                  if (res.status==1){
-                      layer.msg(res.msg);
-                      setTimeout(function () {
-                          window.location.reload();
-                      },3000)
-                  }else if (res.status ==-1){
-                      layer.msg('请登录再评论吧');
-                      return false;
-                  }else{
-                      layer.msg('评论失败');
-                      return false;
-                  }
-              }
-          });*!/
-
-
-      });*/
 
 
 
@@ -252,31 +141,6 @@ layui.use(['layer','layedit','jquery','form','element','code'], function(){ //�
 
 
 
-        /*  $.ajax({
-              type:"POST",
-              url:"/comment",
-              dataType:"json",
-              data:{
-                  comment:content,
-                  article_id:article_id,
-                  _token:$("input[name='_token']").val()
-              },
-              success:function (res) {
-                  if (res.status==1){
-                      layer.msg(res.msg);
-                      setTimeout(function () {
-                          window.location.reload();
-                      },3000)
-                  }else if (res.status ==-1){
-                      layer.msg('请登录再评论吧');
-                      return false;
-                  }else{
-                      layer.msg('评论失败');
-                      return false;
-                  }
-              }
-          });*/
-
 
     });
 
@@ -285,24 +149,6 @@ layui.use(['layer','layedit','jquery','form','element','code'], function(){ //�
 
     //
 
-
-    /*$("a#answer").on('click',function(){
-        layer.open({
-            type: 1
-            , title: '添加回答' //不显示标题栏
-            , closeBtn: false
-            , area: ['680px', '500px']
-            , closeBtn: 1
-            , shade: 0.6
-            , shadeClose: true
-            , resize: true
-            , maxmin: true
-            , id: 'LAY_answer' //设定一个id，防止重复弹出
-            , btnAlign: 'c'
-            , moveType: 1 //拖拽模式，0或者1
-            , content: $('#answerMotai')
-        });
-    });*/
 
     //回答内容
       $("#detailReply").on('click',function () {
@@ -515,32 +361,55 @@ function content_list(id)
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
         var layedit = layui.layedit;
         var listCommentIndex =  layedit.build('listComment'); //建立编辑器
-        var content = layedit.getText(listCommentIndex);
 
-        if (content == ''){
-            layer.msg('评论内容不能空');
-            return false;
-        }
-        var data = {
-            comment:content,
-            article_id:id,
-            //_token:$("input[name='_token']").val()
-        };
+        layer.open({
+            type: 1
+            , title: '添加评论' //不显示标题栏
+            , closeBtn: false
+            , area: ['680px', '500px']
+            , closeBtn: 1
+            , shade: 0.6
+            , shadeClose: true
+            , resize: true
+            , maxmin: true
+            , id: id //设定一个id，防止重复弹出
+            , btnAlign: 'c'
+            , moveType: 1 //拖拽模式，0或者1
+            , content: $("#articleMotai")
+        });
 
-        $.post('/comment',data,function (res) {
-            if (res.status==1){
-                layer.msg(res.msg);
-                setTimeout(function () {
-                    window.location.reload();
-                },3000)
-            }else if (res.status ==-1){
-                layer.msg(res.msg);
-                return false;
-            }else{
-                layer.msg('评论失败');
+        $("a#commentSubmit").on('click',function () {
+            var content = layedit.getText(listCommentIndex);
+            if (content == ''){
+                layer.msg('评论内容不能空');
                 return false;
             }
+            var data = {
+                comment:content,
+                article_id:id,
+                //_token:$("input[name='_token']").val()
+            };
+
+            $.post('/comment',data,function (res) {
+                if (res.status==1){
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+                        window.location.reload();
+                    },3000)
+                }else if (res.status ==-1){
+                    layer.msg(res.msg);
+                    return false;
+                }else{
+                    layer.msg('评论失败');
+                    return false;
+                }
+            });
+
+
         });
+
+
+
 
     });
 
@@ -553,14 +422,46 @@ function zan_post(id) {
         $.post('/zans',{article_id:id},function (res) {
            if (res.status==1){
                layer.msg('谢谢你的点赞');
+               setTimeout(function () {
+                   window.location.reload();
+               },3000);
            }
            if (res.status==0){
-               layer.msg('你已经赞过了')
+               layer.msg('你已经赞过了');
+               return false;
            }
            else{
                layer.msg('非法操作');
+               return false;
            }
         })
+    })
+}
+
+function deleteMessage(id) {
+    layui.use(['layer','layedit','jquery','form','element'], function(){
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+    layer.msg('你要删除当前评论吗？', {
+         time: 0 //不自动关闭
+        ,btn: ['确定', '取消']
+        ,yes: function(index){
+            $.post("/message/delete",{id:id},function (res) {
+                if (res.status==1){
+                    layer.msg('删除留言成功');
+                    setTimeout(function () {
+                        window.location.reload();
+                    },3000);
+                }
+                else{
+                    layer.msg('删除失败');
+                    return false;
+                }
+            })
+
+        }
+    });
+
     })
 }
 

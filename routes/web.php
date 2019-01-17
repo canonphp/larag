@@ -41,7 +41,8 @@ Route::post('/reply','Home\ReplyController@replyStore');
 
 //留言
 Route::get('/message','Home\MessageController@index');
-Route::get('/message/{message}/delete','Home\MessageController@index');
+/*Route::get('/message/{message}/delete','Home\MessageController@delete');*/
+Route::post('/message/delete','Home\MessageController@delete');
 
 Route::post('/message','Home\MessageController@MessageStore');
 
